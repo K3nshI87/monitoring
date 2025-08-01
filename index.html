@@ -53,33 +53,16 @@
                 <canvas class="card__graph" id="boiler"></canvas>
                 <div class="card__value">
                     <span>Сейчас: </span>
-                    <span id="T2-value" class="card__number"> -- °C</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- <div class="card">
-            <h2 class="card__title">Обратка</h2>
-            <div class="card__row">
-                <canvas class="card__graph" id="obratka"></canvas>
-                <div class="card__value">
-                    <span>Сейчас: </span>
-                    <span id="T2-value" class="card__number"> -- °C</span>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <h2 class="card__title">Бойлер</h2>
-            <div class="card__row">
-                <canvas class="card__graph" id="boiler"></canvas>
-                <div class="card__value">
-                    <span>Сейчас: </span>
                     <span id="T5-value" class="card__number"> -- °C</span>
                 </div>
             </div>
         </div>
+
         <div class="card">
-            <h2 class="card__title">Батареи</h2>
+            <div class="card__header" onclick="toggleCard(this)">
+                <h2 class="card__title">Батареи</h2>
+                <span class="card__arrow">&#9660;</span>
+            </div>
             <div class="card__row">
                 <canvas class="card__graph" id="batarei"></canvas>
                 <div class="card__value">
@@ -88,8 +71,12 @@
                 </div>
             </div>
         </div>
+
         <div class="card">
-            <h2 class="card__title">Давление асики</h2>
+            <div class="card__header" onclick="toggleCard(this)">
+                <h2 class="card__title">Давление асики</h2>
+                <span class="card__arrow">&#9660;</span>
+            </div>
             <div class="card__row">
                 <canvas class="card__graph" id="asiki"></canvas>
                 <div class="card__value">
@@ -98,26 +85,34 @@
                 </div>
             </div>
         </div>
+
         <div class="card">
-            <h2 class="card__title">Давление отопление</h2>
+            <div class="card__header" onclick="toggleCard(this)">
+                <h2 class="card__title">Давление отопление</h2>
+                <span class="card__arrow">&#9660;</span>
+            </div>
             <div class="card__row">
                 <canvas class="card__graph" id="otopleniye"></canvas>
                 <div class="card__value">
                     <span>Сейчас: </span>
-                    <span id="T2-value" class="card__number"> -- °C</span>
+                    <span id="T5-value" class="card__number"> -- °C</span>
                 </div>
             </div>
         </div>
+
         <div class="card">
-            <h2 class="card__title">Расход</h2>
+            <div class="card__header" onclick="toggleCard(this)">
+                <h2 class="card__title">Расход</h2>
+                <span class="card__arrow">&#9660;</span>
+            </div>
             <div class="card__row">
                 <canvas class="card__graph" id="rashod"></canvas>
                 <div class="card__value">
                     <span>Сейчас: </span>
-                    <span id="T2-value" class="card__number"> -- °C</span>
+                    <span id="T25-value" class="card__number"> -- °C</span>
                 </div>
             </div>
-        </div> -->
+        </div>
     </main>
     <footer class="footer"></footer>
     <script src="scripts/script.js"></script>
