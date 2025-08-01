@@ -79,7 +79,7 @@ function createTemperatureChart({ canvasId, variableName, labelText, valueElemen
 createTemperatureChart({
     canvasId: 'podacha',
     variableName: 'T1',
-    labelText: 'Температура подачи (°C)',
+    labelText: 'Подача (°C)',
     valueElementId: 'T1-value'
 });
 
