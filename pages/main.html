@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мониторинг</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../jquery.min.js"></script>
+    <script src="../../memvar.js"></script>
+</head>
+<body class="body">
+    <header class="header">
+        <h1 class="header__title">Мониторинг</h1>
+        <a href="#!" class="header__support"><p>+7 (916) 329 67 35</p></a>
+    </header>
+    <main class="main">
+        <div class="card">
+            <div class="card__header" onclick="toggleCard(this)">
+                <h2 class="card__title">Подача</h2>
+                <span class="card__arrow">&#9660;</span>
+            </div>
+            <div class="card__row">
+                <canvas class="card__graph" id="podacha"></canvas>
+                <div class="card__value">
+                    <span>Сейчас: </span>
+                    <span id="T1-value" class="card__number"> -- °C</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card__header" onclick="toggleCard(this)">
+                <h2 class="card__title">Обратка</h2>
+                <span class="card__arrow">&#9660;</span>
+            </div>
+            <div class="card__row">
+                <canvas class="card__graph" id="obratka"></canvas>
+                <div class="card__value">
+                    <span>Сейчас: </span>
+                    <span id="T2-value" class="card__number"> -- °C</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card__header" onclick="toggleCard(this)">
+                <h2 class="card__title">Бойлер</h2>
+                <span class="card__arrow">&#9660;</span>
+            </div>
+            <div class="card__row">
+                <canvas class="card__graph" id="boiler"></canvas>
+                <div class="card__value">
+                    <span>Сейчас: </span>
+                    <span id="T2-value" class="card__number"> -- °C</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="card">
+            <h2 class="card__title">Обратка</h2>
+            <div class="card__row">
+                <canvas class="card__graph" id="obratka"></canvas>
+                <div class="card__value">
+                    <span>Сейчас: </span>
+                    <span id="T2-value" class="card__number"> -- °C</span>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h2 class="card__title">Бойлер</h2>
+            <div class="card__row">
+                <canvas class="card__graph" id="boiler"></canvas>
+                <div class="card__value">
+                    <span>Сейчас: </span>
+                    <span id="T5-value" class="card__number"> -- °C</span>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h2 class="card__title">Батареи</h2>
+            <div class="card__row">
+                <canvas class="card__graph" id="batarei"></canvas>
+                <div class="card__value">
+                    <span>Сейчас: </span>
+                    <span id="T4-value" class="card__number"> -- °C</span>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h2 class="card__title">Давление асики</h2>
+            <div class="card__row">
+                <canvas class="card__graph" id="asiki"></canvas>
+                <div class="card__value">
+                    <span>Сейчас: </span>
+                    <span id="T2-value" class="card__number"> -- °C</span>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h2 class="card__title">Давление отопление</h2>
+            <div class="card__row">
+                <canvas class="card__graph" id="otopleniye"></canvas>
+                <div class="card__value">
+                    <span>Сейчас: </span>
+                    <span id="T2-value" class="card__number"> -- °C</span>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h2 class="card__title">Расход</h2>
+            <div class="card__row">
+                <canvas class="card__graph" id="rashod"></canvas>
+                <div class="card__value">
+                    <span>Сейчас: </span>
+                    <span id="T2-value" class="card__number"> -- °C</span>
+                </div>
+            </div>
+        </div> -->
+    </main>
+    <footer class="footer"></footer>
+    <script src="/scripts/script.js"></script>
+</body>
+<script>
+function toggleCard(headerElement) {
+    const card = headerElement.closest('.card');
+    card.classList.toggle('expanded');
+    card.classList.toggle('collapsed');
+}
+</script>
+</html>
