@@ -1,4 +1,4 @@
-function createTemperatureChart({ canvasId, variableName, labelText, valueElementId, unit }) {
+function createTemperatureChart({ canvasId, variableName, labelText, valueElementId, unit, min = 0, max = 100, stepSize = 10 }) {
     const ctx = document.getElementById(canvasId).getContext('2d');
 
     const MAX_POINTS = 10;
@@ -12,9 +12,9 @@ function createTemperatureChart({ canvasId, variableName, labelText, valueElemen
             datasets: [{
                 data: dataPoints,
                 borderColor: '#4bb3fd',
-                backgroundColor: 'transparent', 
-                pointBackgroundColor: '#4bb3fd', 
-                pointRadius: 3,  
+                backgroundColor: 'transparent',
+                pointBackgroundColor: '#4bb3fd',
+                pointRadius: 3,
                 pointHoverRadius: 5,
                 tension: 0.4,
                 fill: false
@@ -24,8 +24,8 @@ function createTemperatureChart({ canvasId, variableName, labelText, valueElemen
             responsive: true,
             maintainAspectRatio: false,
             animation: {
-                duration: 500,        // длительность анимации (в мс)
-                easing: 'easeOutQuart' // плавное замедление
+                duration: 500,
+                easing: 'easeOutQuart'
             },
             plugins: {
                 legend: {
@@ -35,10 +35,10 @@ function createTemperatureChart({ canvasId, variableName, labelText, valueElemen
             scales: {
                 y: {
                     beginAtZero: true,
-                    min: 0,
-                    max: 100,
+                    min,
+                    max,
                     ticks: {
-                        stepSize: 10
+                        stepSize
                     },
                     title: {
                         display: true,
@@ -59,12 +59,10 @@ function createTemperatureChart({ canvasId, variableName, labelText, valueElemen
         }
     });
 
-
     setInterval(() => {
         const shmem = new Shmem();
         shmem.loadVariables([{ name: variableName }]).done(vars => {
             const value = vars[0].value;
-            console.log(variableName, 'value:', value, 'typeof:', typeof value);
             const time = new Date().toLocaleTimeString();
 
             labels.push(time);
@@ -91,13 +89,15 @@ function createTemperatureChart({ canvasId, variableName, labelText, valueElemen
     }, 2000);
 }
 
-
 createTemperatureChart({
     canvasId: 'podacha',
     variableName: 'T1',
     labelText: 'Подача',
     valueElementId: 'T1',
-    unit: '°C'
+    unit: '°C',
+    min: 0,
+    max: 100,
+    stepSize: 10
 });
 
 createTemperatureChart({
@@ -105,7 +105,10 @@ createTemperatureChart({
     variableName: 'T2',
     labelText: 'Обратка',
     valueElementId: 'T2',
-    unit: '°C'
+    unit: '°C',
+    min: 0,
+    max: 100,
+    stepSize: 10
 });
 
 createTemperatureChart({
@@ -113,7 +116,10 @@ createTemperatureChart({
     variableName: 'T5',
     labelText: 'Бойлер',
     valueElementId: 'T5',
-    unit: '°C'
+    unit: '°C',
+    min: 0,
+    max: 100,
+    stepSize: 10
 });
 
 createTemperatureChart({
@@ -121,15 +127,22 @@ createTemperatureChart({
     variableName: 'T4',
     labelText: 'Батареи',
     valueElementId: 'T4',
-    unit: '°C'
+    unit: '°C',
+    min: 0,
+    max: 100,
+    stepSize: 10
 });
+
 
 createTemperatureChart({
     canvasId: 'asiki',
     variableName: 'ASPR',
     labelText: 'Давление асики',
     valueElementId: 'ASPR',
-    unit: 'Bar'
+    unit: 'Bar',
+    min: 0,
+    max: 3,
+    stepSize: 0.2
 });
 
 createTemperatureChart({
@@ -137,7 +150,10 @@ createTemperatureChart({
     variableName: 'OTPR',
     labelText: 'Давление отопление',
     valueElementId: 'OTPR',
-    unit: 'Bar'
+    unit: 'Bar',
+    min: 0,
+    max: 3,
+    stepSize: 0.2
 });
 
 createTemperatureChart({
@@ -145,5 +161,9 @@ createTemperatureChart({
     variableName: 'RASHOD',
     labelText: 'Расход',
     valueElementId: 'RASHOD',
-    unit: 'л.ч.'
+    unit: 'л.ч.',
+    min: 0,
+    max: 3000,
+    stepSize: 300
 });
+
