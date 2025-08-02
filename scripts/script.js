@@ -1,4 +1,4 @@
-function createTemperatureChart({ canvasId, variableName, labelText, valueElementId }) {
+function createTemperatureChart({ canvasId, variableName, labelText, valueElementId, unit }) {
     const ctx = document.getElementById(canvasId).getContext('2d');
 
     const MAX_POINTS = 10;
@@ -12,7 +12,7 @@ function createTemperatureChart({ canvasId, variableName, labelText, valueElemen
             datasets: [{
                 label: labelText,
                 data: dataPoints,
-                borderColor: 'black',
+                borderColor: 'transparent',
                 backgroundColor: 'blue',
                 tension: 0.3,
                 fill: true,
@@ -34,7 +34,7 @@ function createTemperatureChart({ canvasId, variableName, labelText, valueElemen
                     },
                     title: {
                         display: true,
-                        text: '°C'
+                        text: unit
                     }
                 },
                 x: {
@@ -51,11 +51,11 @@ function createTemperatureChart({ canvasId, variableName, labelText, valueElemen
         }
     });
 
-    // обновление данных
     setInterval(() => {
         const shmem = new Shmem();
         shmem.loadVariables([{ name: variableName }]).done(vars => {
             const value = vars[0].value;
+            console.log(variableName, 'value:', value, 'typeof:', typeof value);
             const time = new Date().toLocaleTimeString();
 
             labels.push(time);
@@ -68,59 +68,73 @@ function createTemperatureChart({ canvasId, variableName, labelText, valueElemen
 
             chart.update();
 
-            // обновляем цифровое значение, если указано
             if (valueElementId) {
-                document.getElementById(valueElementId).textContent = value.toFixed(1) + " °C";
+                const el = document.getElementById(valueElementId);
+                if (el) {
+                    let displayValue = '--';
+                    if (!isNaN(parseFloat(value))) {
+                        displayValue = parseFloat(value).toFixed(1);
+                    }
+                    el.textContent = displayValue + ' ' + unit;
+                }
             }
         });
     }, 2000);
 }
 
+
 createTemperatureChart({
     canvasId: 'podacha',
     variableName: 'T1',
-    labelText: 'Подача (°C)',
-    valueElementId: 'T1'
+    labelText: 'Подача',
+    valueElementId: 'T1',
+    unit: '°C'
 });
 
 createTemperatureChart({
     canvasId: 'obratka',
     variableName: 'T2',
-    labelText: 'Обратка (°C)',
-    valueElementId: 'T2'
+    labelText: 'Обратка',
+    valueElementId: 'T2',
+    unit: '°C'
 });
 
 createTemperatureChart({
     canvasId: 'boiler',
     variableName: 'T5',
-    labelText: 'Бойлер (°C)',
-    valueElementId: 'T5'
+    labelText: 'Бойлер',
+    valueElementId: 'T5',
+    unit: '°C'
 });
 
 createTemperatureChart({
     canvasId: 'batarei',
     variableName: 'T4',
-    labelText: 'Батареи (°C)',
-    valueElementId: 'T4'
+    labelText: 'Батареи',
+    valueElementId: 'T4',
+    unit: '°C'
 });
 
 createTemperatureChart({
     canvasId: 'asiki',
     variableName: 'ASPR',
-    labelText: 'Асики (Bar)',
-    valueElementId: 'ASPR'
+    labelText: 'Давление асики',
+    valueElementId: 'ASPR',
+    unit: 'Bar'
 });
 
 createTemperatureChart({
     canvasId: 'otopleniye',
     variableName: 'OTPR',
-    labelText: 'Отопление (Bar)',
-    valueElementId: 'OTPR'
+    labelText: 'Давление отопление',
+    valueElementId: 'OTPR',
+    unit: 'Bar'
 });
 
 createTemperatureChart({
     canvasId: 'rashod',
     variableName: 'RASHOD',
-    labelText: 'Расход (л.ч)',
-    valueElementId: 'RASHOD'
+    labelText: 'Расход',
+    valueElementId: 'RASHOD',
+    unit: 'л.ч.'
 });
