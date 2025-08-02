@@ -80,47 +80,47 @@ createTemperatureChart({
     canvasId: 'podacha',
     variableName: 'T1',
     labelText: 'Подача (°C)',
-    valueElementId: 'T1-value'
+    valueElementId: 'T1'
 });
 
 createTemperatureChart({
     canvasId: 'obratka',
     variableName: 'T2',
     labelText: 'Обратка (°C)',
-    valueElementId: 'T2-value'
+    valueElementId: 'T2'
 });
 
 createTemperatureChart({
     canvasId: 'boiler',
     variableName: 'T5',
     labelText: 'Бойлер (°C)',
-    valueElementId: 'T5-value'
+    valueElementId: 'T5'
 });
 
 createTemperatureChart({
     canvasId: 'batarei',
     variableName: 'T4',
     labelText: 'Батареи (°C)',
-    valueElementId: 'T4-value'
+    valueElementId: 'T4'
 });
 
 createTemperatureChart({
     canvasId: 'asiki',
-    variableName: 'Pressure_asiki',
+    variableName: 'ASPR',
     labelText: 'Асики (Bar)',
-    valueElementId: 'Asiki-value'
+    valueElementId: 'ASPR'
 });
 
 createTemperatureChart({
     canvasId: 'otopleniye',
-    variableName: 'Pressure-otop',
+    variableName: 'OTPR',
     labelText: 'Отопление (Bar)',
-    valueElementId: 'Otopleniye-value'
+    valueElementId: 'OTPR'
 });
 
 createTemperatureChart({
     canvasId: 'rashod',
-    variableName: 'Flow',
+    variableName: 'RASHOD',
     labelText: 'Расход (л.ч)',
-    valueElementId: 'Flow-value'
+    valueElementId: 'RASHOD'
 });
