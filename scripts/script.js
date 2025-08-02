@@ -10,20 +10,28 @@ function createTemperatureChart({ canvasId, variableName, labelText, valueElemen
         data: {
             labels: labels,
             datasets: [{
-                label: labelText,
                 data: dataPoints,
-                borderColor: 'transparent',
-                backgroundColor: 'blue',
-                tension: 0.3,
-                fill: true,
-                borderWidth: 1,
-                pointRadius: 2
+                borderColor: '#4bb3fd',
+                backgroundColor: 'transparent', 
+                pointBackgroundColor: '#4bb3fd', 
+                pointRadius: 3,  
+                pointHoverRadius: 5,
+                tension: 0.4,
+                fill: false
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            animation: false,
+            animation: {
+                duration: 500,        // длительность анимации (в мс)
+                easing: 'easeOutQuart' // плавное замедление
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
             scales: {
                 y: {
                     beginAtZero: true,
@@ -50,6 +58,7 @@ function createTemperatureChart({ canvasId, variableName, labelText, valueElemen
             }
         }
     });
+
 
     setInterval(() => {
         const shmem = new Shmem();
